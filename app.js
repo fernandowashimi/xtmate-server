@@ -3,6 +3,7 @@ const app = express();
 const server = require("http").Server(app);
 
 const io = require("socket.io")(server);
+const axios = require("axios");
 
 const mongoose = require('mongoose');
 
@@ -23,6 +24,12 @@ app.use((req, res, next) => {
     req.io = io;
 
     return next();
+});
+
+io.on('connection', socket => {
+    socket.on('user_left', async name => {
+        await axios.put('http://localhost:8080/room/5deef9a41c9d44000092d53c/remove', { name });
+    });
 });
 
 app.use(cors());
