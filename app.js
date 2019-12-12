@@ -28,8 +28,7 @@ app.use((req, res, next) => {
 
 io.on('connection', socket => {
     socket.on('user_left', async user => {
-        console.log('emit close' + user);
-        await axios.put('http://localhost:8080/room/5deef9a41c9d44000092d53c/remove', user);
+        await axios.put('https://xtmate-server.herokuapp.com/room/5deef9a41c9d44000092d53c/remove', user);
     });
 });
 
