@@ -9,9 +9,16 @@ const roomSchema = Schema({
     users: [
         {
             name: String,
-            emojiIndex: Number
+            emojiIndex: Number,
+            score: {
+                type: String,
+                default: null
+            }
         }
     ],
+    currentRound: {
+
+    }
 });
 
 const Room = mongoose.model('Room', roomSchema);

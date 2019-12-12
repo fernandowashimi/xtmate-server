@@ -11,5 +11,6 @@ routes.get('/round/room/:id', RoundController.listInRoom);
 routes.get('/room/:id', RoomController.index);
 routes.put('/room/:id/insert', RoomController.insertUser);
 routes.put('/room/:id/remove', RoomController.removeUser);
+routes.put('/room/:id/score', RoomController.updateUserScore)
 
 module.exports = routes;

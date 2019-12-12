@@ -9,7 +9,7 @@ const roundSchema = Schema({
     },
     scores: [
         {
-            user: String,
+            user: Schema.Types.ObjectId,
             score: Number
         },        
     ],

@@ -27,8 +27,8 @@ app.use((req, res, next) => {
 });
 
 io.on('connection', socket => {
-    socket.on('user_left', async name => {
-        await axios.put('http://localhost:8080/room/5deef9a41c9d44000092d53c/remove', { name });
+    socket.on('user_left', async user => {
+        await axios.put('http://localhost:8080/room/5deef9a41c9d44000092d53c/remove', user);
     });
 });
 
