@@ -2,7 +2,11 @@ const Room = require('../models/Room');
 
 const insertUser = async (req, res) => {
     try {
-        req.body.emojiIndex = Math.floor(Math.random() * 38);
+        if (req.body.name.toLowerCase() === 'gustavo') {
+            req.body.emojiIndex = 12;
+        } else {
+            req.body.emojiIndex = Math.floor(Math.random() * 38);
+        }
         const room = await Room.findByIdAndUpdate(req.params.id, { $push: { users: req.body } }, { new: true, useFindAndModify: false });
         req.io.sockets.emit("user_connection", room.users.slice(-1)[0]);
         res.send(room);
