@@ -17,8 +17,8 @@ const insertUser = async (req, res) => {
 
 const removeUser = async (req, res) => {
     try {
-        const room = await Room.findByIdAndUpdate(req.params.id, { $pull: { users: req.body } }, { new: true, useFindAndModify: false });
-        req.io.sockets.emit("user_disconnection", room.users.slice(-1)[0]);
+        const room = await Room.findByIdAndUpdate(req.params.id, { $pull: { users: req.body } }, { new: false, useFindAndModify: false });
+        req.io.sockets.emit("user_disconnection", req.body);
         res.send(room);
     } catch(error) {
         res.status(500).send(error);

@@ -15,10 +15,7 @@ const roomSchema = Schema({
                 default: null
             }
         }
-    ],
-    currentRound: {
-
-    }
+    ]
 });
 
 const Room = mongoose.model('Room', roomSchema);
